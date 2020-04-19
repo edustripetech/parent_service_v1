@@ -1,0 +1,74 @@
+{
+  "name": "parent_service_v1",
+  "version": "1.0.0",
+  "description": "The parent service for Edustripe.",
+  "main": "index.js",
+  "repository": "git@github.com:edustripetech/parent_service_v1.git",
+  "author": "The Edustripe team.",
+  "license": "MIT",
+  "scripts": {
+    "start": "node build/app.js",
+    "dev": "export DEBUG=dev && nodemon --exec babel-node src/app.js",
+    "clean": "rm -rf build && mkdir build",
+    "build": "yarn clean && babel -d ./build ./src --ignore '**/*.spec.js'",
+    "pretest": "export NODE_ENV=test && yarn migrate:undo && yarn migrate && yarn seed",
+    "test": "export NODE_ENV=test && mocha --require @babel/register 'src/tests' --exit",
+    "nyc": "nyc --exclude '**/*.spec.js' --exclude 'src/database/**' --reporter=lcov yarn test && nyc report --reporter=text-lcov | coveralls",
+    "coverage": "nyc yarn test",
+    "migrate": "yarn sequelize db:migrate",
+    "migrate:undo": "yarn sequelize db:migrate:undo:all",
+    "migrate:undo:last": "yarn sequelize db:migrate:undo",
+    "seed": "yarn sequelize db:seed:all",
+    "seed:undo": "yarn sequelize db:seed:undo",
+    "generate:model": "yarn sequelize model:generate"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/register": "^7.9.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "coveralls": "^3.0.11",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-prettier": "^3.1.2",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.1.1",
+    "mocha": "^7.1.1",
+    "mocha-lcov-reporter": "^1.3.0",
+    "nodemon": "^1.18.9",
+    "nyc": "^15.0.0",
+    "prettier": "^2.0.4",
+    "sequelize-cli": "^5.5.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "chalk": "^3.0.0",
+    "cors": "^2.8.5",
+    "debug": "^4.1.1",
+    "dotenv": "^8.2.0",
+    "errorhandler": "^1.5.1",
+    "express": "^4.17.1",
+    "faker": "^4.1.0",
+    "morgan": "^1.10.0",
+    "pg": "^8.0.0",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.21.6"
+  },
+  "keywords": [],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn test"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "yarn eslint --fix"
+    ]
+  }
+}
