@@ -2,10 +2,10 @@
 // TODO: Delete this file
 
 /* eslint-disable require-jsdoc */
-export const up = () => {
+export const up = async () => {
   // TODO: Delete
 };
 
-export const down = () => {
+export const down = async () => {
   // TODO: Delete
 };
