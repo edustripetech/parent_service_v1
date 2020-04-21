@@ -15,7 +15,7 @@ The Edustripe parent's service repository
 ## Getting Started
 
 - run `yarn` to install dependencies
-- create a .env file from the .env.example file `cp .env.example .env` and fill in the necessary environment variables
+- create a .env file from the .env.sample file `cp .env.sample .env` and fill in the necessary environment variables
 
 ### Development server
 - run `yarn dev` to start the development server
