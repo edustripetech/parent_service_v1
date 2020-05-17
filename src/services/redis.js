@@ -76,7 +76,7 @@ export const setCache = (
   } catch (e) {
     stringifyData = `${data || ''}`;
   }
-  redisClient.setex(key, exp, JSON.stringify(stringifyData), callback);
+  redisClient.setex(key, exp, stringifyData, callback);
 };
 
 export default redisClient;
