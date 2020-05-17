@@ -70,7 +70,13 @@ export const setCache = (
 ) => {
   const exp = expiresIn || process.env.REDIS_DATA_EXPIRATION;
   const key = getKey(req, withUserId);
-  redisClient.setex(key, exp, JSON.stringify(data), callback);
+  let stringifyData;
+  try {
+    stringifyData = JSON.stringify(data);
+  } catch (e) {
+    stringifyData = `${data || ''}`;
+  }
+  redisClient.setex(key, exp, JSON.stringify(stringifyData), callback);
 };
 
 export default redisClient;
