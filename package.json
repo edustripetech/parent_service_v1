@@ -9,6 +9,7 @@
   "scripts": {
     "start": "node build/app.js",
     "dev": "export DEBUG=dev && nodemon --exec babel-node src/app.js",
+    "dev:win": "set DEBUG=dev && nodemon --exec babel-node src/app.js",
     "clean": "rm -rf build && mkdir build",
     "build": "yarn clean && babel -d ./build ./src --ignore '**/*.spec.js'",
     "pretest": "export NODE_ENV=test && yarn migrate:undo && yarn migrate && yarn seed",
@@ -57,7 +58,9 @@
     "morgan": "^1.10.0",
     "pg": "^8.0.0",
     "pg-hstore": "^2.3.3",
-    "sequelize": "^5.21.6"
+    "sequelize": "^5.21.6",
+    "swagger-jsdoc": "^4.0.0",
+    "swagger-ui-express": "^4.1.4"
   },
   "keywords": [],
   "husky": {

@@ -1,0 +1,18 @@
+{
+  "info": {
+    "title": "Parent Service API",
+    "version": "1.0.0",
+    "description": "Edustripe Online parents platform",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "basePath": "/",
+  "swagger": "2.0",
+  "paths": {},
+  "definitions": {},
+  "responses": {},
+  "parameters": {},
+  "securityDefinitions": {}
+}

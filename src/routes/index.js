@@ -2,7 +2,6 @@ import express from 'express';
 import { ok } from '../utils';
 
 const router = express();
-
 router.get('/', (_req, res) =>
   ok(res, {
     status: res.statusCode,
