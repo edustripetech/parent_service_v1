@@ -8,6 +8,7 @@ import debug from 'debug';
 import chalk from 'chalk';
 import 'dotenv/config';
 import routes from './routes';
+import EmailService from './services/EmailService';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const app = express();

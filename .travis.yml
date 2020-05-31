@@ -9,9 +9,11 @@ cache:
 env:
   global:
     - export TEST_DATABASE_URL=postgresql://postgres@localhost:5432/edustripe_test_db
+    - export REDIS_URL=redis://127.0.0.1:6379
 
 services:
   - postgresql
+  - redis
 
 before_script:
   - psql -c 'create database edustripe_test_db; ' -U postgres
